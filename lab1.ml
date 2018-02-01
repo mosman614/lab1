@@ -178,18 +178,22 @@ to the list containing the elements 3, 4, and 5? You'll want to
 replace the "[]" with the correct functional call.
 ......................................................................*)
 
-let square_all (lst : int list) : int list =
-  failwith "square_all not implemented" ;;
+let rec square_all (lst : int list) : int list =
+  match lst with
+    | [] -> []
+    | h :: t -> (h*h) :: square_all t ;;
 
-let exercise6 = [] ;;
+let exercise6 = square_all [3;4;5] ;;
 
 (*......................................................................
 Exercise 7: Define a recursive function that sums an integer
 list. (What's a sensible return value for the empty list?)
 ......................................................................*)
 
-let sum (lst : int list) : int =
-  failwith "sum not implemented" ;;
+let rec sum (lst : int list) : int =
+  match lst with
+    | [] -> 0
+    | h :: t -> h + sum t ;;
   
 (*......................................................................
 Exercise 8: Define a recursive function that returns the maximum
@@ -199,7 +203,11 @@ Invalid_argument exception for instance.
 ......................................................................*)
 
 let max_list (lst : int list) : int =
-  failwith "max_list not implemented" ;;
+  match lst with
+    | [] -> failwith "empty"
+    | [x] -> x  
+    | h :: mid :: t -> if h > mid then max_list (h :: t) 
+      else max_list (mid :: t);;
 
 (*......................................................................
 Exercise 9: Define a function zip, that takes two int lists and
