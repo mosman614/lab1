@@ -204,7 +204,7 @@ Invalid_argument exception for instance.
 
 let rec max_list (lst : int list) : int =
   match lst with
-    | [] -> failwith "empty"
+    | [] -> failwith "empty list"
     | [x] -> x  
     | h :: mid :: t -> if h > mid then max_list (h :: t) 
       else max_list (mid :: t);;
