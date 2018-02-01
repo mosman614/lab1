@@ -202,7 +202,7 @@ can raise an appropriate exception -- a Match_failure or
 Invalid_argument exception for instance.
 ......................................................................*)
 
-let max_list (lst : int list) : int =
+let rec max_list (lst : int list) : int =
   match lst with
     | [] -> failwith "empty"
     | [x] -> x  
